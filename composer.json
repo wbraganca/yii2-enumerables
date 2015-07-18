@@ -1,0 +1,35 @@
+{
+    "name": "wbraganca/yii2-enumerables",
+    "description": "An enumeration implementation to yii2 framework.",
+    "keywords": [
+        "wbraganca",
+        "yii2",
+        "yii2-enumerables",
+        "yii2-enum"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/wbraganca/yii2-enumerables/issues",
+        "wiki": "https://github.com/wbraganca/yii2-enumerables/wiki/",
+        "source": "https://github.com/wbraganca/yii2-enumerables"
+    },
+    "authors": [
+        {
+            "name": "Wanderson Bragança",
+            "email": "wanderson.wbc@gmail.com",
+            "homepage": "http://wbraganca.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "wbraganca\\enumerables\\": "src"
+        }
+    }
+}
