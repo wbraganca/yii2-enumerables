@@ -17,6 +17,25 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Friday' => 'Sexta-feira',
+    'Monday' => 'Segunda-feira',
+    'Saturday' => 'Sábado',
+    'Sunday' => 'Domingo',
+    'Thursday' => 'Quinta-feira',
+    'Tuesday' => 'Terça-feira',
+    'Wednesday' => 'Quarta-feira',
+    'April' => 'Abril',
+    'August' => 'Agosto',
+    'December' => 'Dezembro',
+    'February' => 'Fevereiro',
+    'January' => 'Janeiro',
+    'July' => 'Julho',
+    'June' => 'Junho',
+    'March' => 'Março',
+    'May' => 'Maio',
     'No' => 'Não',
+    'November' => 'Novembro',
+    'October' => 'Outubro',
+    'September' => 'Setembro',
     'Yes' => 'Sim',
 ];
