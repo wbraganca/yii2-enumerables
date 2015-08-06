@@ -3,6 +3,7 @@ yii2-enumerables change Log
 
 dev-master
 ----------
+- Enh: Changed "filterCase" function (EnumParseStringTrait.php) to use "mbstring".
 - Enh: Added function getLabel() to EnumDay and EnumMonth. Refactored code.
 
 version 1.1.0

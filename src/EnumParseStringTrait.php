@@ -7,6 +7,7 @@
 
 namespace wbraganca\enumerables;
 
+use Yii;
 use yii\base\InvalidParamException;
 
 /**
@@ -44,9 +45,9 @@ trait EnumParseStringTrait
                 throw new InvalidParamException('Invalid Parameter case => ' . $options['case']);
             }
             if ($options['case'] === 'lower') {
-                $value = strtolower($value);
+                $value = mb_strtolower($value, Yii::$app->charset);
             } else {
-                $value = strtoupper($value);
+                $value = mb_strtoupper($value, Yii::$app->charset);
             }
         }
 
