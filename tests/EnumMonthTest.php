@@ -49,4 +49,20 @@ class EnumMonthTest extends PHPUnit_Framework_TestCase
 
         return $months;
     }
+
+    public function testLabelMonth()
+    {
+        $labelMonth = EnumMonth::getLabel(EnumMonth::JANUARY);
+        $this->assertEquals($labelMonth, 'January');
+
+        return $labelMonth;
+    }
+
+    public function testAbbrLabelMonth()
+    {
+        $labelMonth = EnumMonth::getLabel(EnumMonth::JANUARY, ['abbr' => true]);
+        $this->assertEquals($labelMonth, 'Jan');
+
+        return $labelMonth;
+    }
 }

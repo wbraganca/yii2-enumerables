@@ -20,6 +20,8 @@ use wbraganca\enumerables\AbstractEnumeration;
  */
 class EnumMonth extends AbstractEnumeration
 {
+    use EnumDateTrait;
+
     const JANUARY = 1;
     const FEBRUARY = 2;
     const MARCH = 3;
@@ -33,6 +35,10 @@ class EnumMonth extends AbstractEnumeration
     const NOVEMBER = 11;
     const DECEMBER = 12;
 
+    /**
+     * Generate list of months.
+     * @return array
+     */
     protected static function months()
     {
         static::initI18N();
@@ -53,36 +59,27 @@ class EnumMonth extends AbstractEnumeration
     }
 
     /**
-     * Generate list of months
+     * Generate formated list of months.
      * @return array
      */
     public static function getConstList($options=[])
     {
         $months = self::months();
-        $abbr = (isset($options['abbr'])) ? $options['abbr'] : false;
-        $case = null;
 
-        if (isset($options['case'])) {
-            if (!in_array($options['case'], ['lower', 'upper'])) {
-                throw new InvalidParamException('Invalid Parameter case => ' . $options['case']);
-            }
-            $case = $options['case'];
-        }
-
-        if (isset($options['abbr']) && isset($options['abbr']) === true) {
-            foreach ($months as $key => $value) {
-                $data = $abbr ? substr($value, 0, 3) : $value;
-
-                if ($case === 'lower') {
-                    $data = strtolower($data);
-                } elseif ($case === 'upper') {
-                    $data = strtoupper($data);
-                }
-
-                $months[$key] = $data;
-            }
+        foreach ($months as $key => $value) {
+            $months[$key] = self::formatValue($value, $options);
         }
 
         return $months;
+    }
+
+    /**
+     * Returns the name of the month.
+     * @return int $value
+     */
+    public static function getLabel($value, $options=[])
+    {
+        $months = self::months();
+        return (isset($months[$value])) ? self::formatValue($months[$value], $options) : '';
     }
 }

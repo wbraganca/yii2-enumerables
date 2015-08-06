@@ -19,6 +19,8 @@ use wbraganca\enumerables\AbstractEnumeration;
  */
 class EnumDay extends AbstractEnumeration
 {
+    use EnumDateTrait;
+
     const SUNDAY = 1;
     const MONDAY = 2;
     const TUESDAY = 3;
@@ -28,7 +30,7 @@ class EnumDay extends AbstractEnumeration
     const SATURDAY = 7;
 
     /**
-     * Generate list of days
+     * Generate list of days.
      * @return array
      */
     protected static function days()
@@ -46,36 +48,27 @@ class EnumDay extends AbstractEnumeration
     }
 
     /**
-     * Generate list of months
+     * Generate formated list of days.
      * @return array
      */
     public static function getConstList($options=[])
     {
         $days = self::days();
-        $abbr = (isset($options['abbr'])) ? $options['abbr'] : false;
-        $case = null;
 
-        if (isset($options['case'])) {
-            if (!in_array($options['case'], ['lower', 'upper'])) {
-                throw new InvalidParamException('Invalid Parameter case => ' . $options['case']);
-            }
-            $case = $options['case'];
-        }
-
-        if (isset($options['abbr']) && isset($options['abbr']) === true) {
-            foreach ($days as $key => $value) {
-                $data = $abbr ? substr($value, 0, 3) : $value;
-
-                if ($case === 'lower') {
-                    $data = strtolower($data);
-                } elseif ($case === 'upper') {
-                    $data = strtoupper($data);
-                }
-
-                $days[$key] = $data;
-            }
+        foreach ($days as $key => $value) {
+            $days[$key] = self::formatValue($value, $options);
         }
 
         return $days;
+    }
+
+    /**
+     * Returns the name of the day.
+     * @return int $value
+     */
+    public static function getLabel($value, $options=[])
+    {
+        $days = self::days();
+        return (isset($days[$value])) ? self::formatValue($days[$value], $options) : '';
     }
 }

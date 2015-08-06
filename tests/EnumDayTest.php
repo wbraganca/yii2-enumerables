@@ -44,4 +44,20 @@ class EnumDayTest extends PHPUnit_Framework_TestCase
 
         return $days;
     }
+
+    public function testLabelDay()
+    {
+        $labelDay = EnumDay::getLabel(EnumDay::MONDAY);
+        $this->assertEquals($labelDay, 'Monday');
+
+        return $labelDay;
+    }
+
+    public function testAbbrLabelDay()
+    {
+        $labelDay = EnumDay::getLabel(EnumDay::MONDAY, ['abbr' => true]);
+        $this->assertEquals($labelDay, 'Mon');
+
+        return $labelDay;
+    }
 }

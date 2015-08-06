@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist wbraganca/yii2-enumerables "~1.1.0"
+php composer.phar require --prefer-dist wbraganca/yii2-enumerables "*"
 ```
 
 or add
 
 ```
-"wbraganca/yii2-enumerables": "~1.1.0"
+"wbraganca/yii2-enumerables": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -142,7 +142,21 @@ array(12) {
     [11] => 'NOV'
     [12] => 'DEC'
 }
+```
 
+```
+EnumMonth::getLabel(EnumMonth::JANUARY);
+string(7) "January"
+```
+
+```
+EnumMonth::getLabel(1, ['abbr' => true, 'case' => 'upper']);
+string(3) "JAN"
+```
+
+```
+EnumMonth::getLabel(1, ['case' => 'lower']);
+string(7) "january"
 ```
 
 
@@ -177,4 +191,19 @@ array(7) {
     [7] => 'SAT'
 }
 
+```
+
+```
+EnumDay::getLabel(EnumDay::MONDAY);
+string(6) "Monday"
+```
+
+```
+EnumDay::getLabel(7, ['abbr' => true, 'case' => 'upper']);
+string(3) "SAT"
+```
+
+```
+EnumDay::getLabel(7, ['abbr' => true, 'case' => 'lower']);
+string(3) "sat"
 ```
