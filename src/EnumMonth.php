@@ -20,7 +20,7 @@ use wbraganca\enumerables\AbstractEnumeration;
  */
 class EnumMonth extends AbstractEnumeration
 {
-    use EnumDateTrait;
+    use EnumParseStringTrait;
 
     const JANUARY = 1;
     const FEBRUARY = 2;
@@ -67,7 +67,7 @@ class EnumMonth extends AbstractEnumeration
         $months = self::months();
 
         foreach ($months as $key => $value) {
-            $months[$key] = self::formatValue($value, $options);
+            $months[$key] = self::applyOptions($value, $options);
         }
 
         return $months;
@@ -80,6 +80,6 @@ class EnumMonth extends AbstractEnumeration
     public static function getLabel($value, $options=[])
     {
         $months = self::months();
-        return (isset($months[$value])) ? self::formatValue($months[$value], $options) : '';
+        return (isset($months[$value])) ? self::applyOptions($months[$value], $options) : '';
     }
 }

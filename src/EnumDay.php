@@ -19,7 +19,7 @@ use wbraganca\enumerables\AbstractEnumeration;
  */
 class EnumDay extends AbstractEnumeration
 {
-    use EnumDateTrait;
+    use EnumParseStringTrait;
 
     const SUNDAY = 1;
     const MONDAY = 2;
@@ -56,7 +56,7 @@ class EnumDay extends AbstractEnumeration
         $days = self::days();
 
         foreach ($days as $key => $value) {
-            $days[$key] = self::formatValue($value, $options);
+            $days[$key] = self::applyOptions($value, $options);
         }
 
         return $days;
@@ -69,6 +69,6 @@ class EnumDay extends AbstractEnumeration
     public static function getLabel($value, $options=[])
     {
         $days = self::days();
-        return (isset($days[$value])) ? self::formatValue($days[$value], $options) : '';
+        return (isset($days[$value])) ? self::applyOptions($days[$value], $options) : '';
     }
 }
